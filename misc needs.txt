@@ -1,0 +1,5 @@
+sudo apt-get install alsa-utils mplayer
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt install nodejs
+sudo npm install -g forever
+npm install express body-parser 
