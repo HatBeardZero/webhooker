@@ -36,11 +36,11 @@ app.post('/restart',    function(request, response) {
 
 	for (var i = 0; i < 5; i++) {
         /* On for 1 second */
-        rpio.write(21, rpio.HIGH);
+        rpio.write(12, rpio.HIGH);
         rpio.sleep(1);
 
         /* Off for half a second (500ms) */
-        rpio.write(21, rpio.LOW);
+        rpio.write(12, rpio.LOW);
         rpio.msleep(500);
 }
 		
