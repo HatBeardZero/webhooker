@@ -9,7 +9,9 @@ var instance
 var IP_ADDRESS = '127.0.0.1';
 var sys = require('sys')
 var exec = require('child_process').exec;
+var rpio = require('rpio');
 
+rpio.open(12, rpio.OUTPUT, rpio.LOW);
 
 // Log server output to stdout
 function log(data) {
@@ -32,6 +34,16 @@ app.post('/restart',    function(request, response) {
             }
         });
 
+	for (var i = 0; i < 5; i++) {
+        /* On for 1 second */
+        rpio.write(21, rpio.HIGH);
+        rpio.sleep(1);
+
+        /* Off for half a second (500ms) */
+        rpio.write(21, rpio.LOW);
+        rpio.msleep(500);
+}
+		
     // buffer output for a quarter of a second, then reply to HTTP request
     var buffer = [];
     var collector = function(data) {
